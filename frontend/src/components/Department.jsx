@@ -23,14 +23,10 @@ const Departments = () => {
       
       
         try {
-          const response = await axios.get("http://localhost:3000/departments", {
-            // headers: {
-            //   "token": token, // Include the user's token
-            // },
-          }
-          )
+          const response = await axios.get("http://localhost:3000/departments")
           const { data } = response;
           console.log('APi response----->', data)
+          setDepartments(data)
           // setOrders(data.orders);
 
         } catch (error) {
@@ -183,7 +179,7 @@ const Departments = () => {
       {/* List of existing departments */}
       <ul>
         {departments.map((department, index) => (
-          <li key={department.id} className="mb-2 p-2 bg-gray-100 rounded flex justify-between items-center">
+          <li key={department._id} className="mb-2 p-2 bg-gray-100 rounded flex justify-between items-center">
             <span>{department.name}</span>
             <div>
               <button
